@@ -1,0 +1,44 @@
+extends ./layout
+
+block moreScripts
+	script(type='text/javascript', src='/scripts/laserSummary.js')
+
+block contents
+	center 
+		h1 Laser Crate 
+			crtnum #{crateNum} 
+			| Muon Fill summary plots
+		h3
+			a.btn.btn-default(href='/laser'+crateNum+'/waveforms') Laser Fill view
+			a.btn.btn-default(href='/laser'+crateNum+'/slowcontrol') Laser Slow Control
+			//a.btn.btn-info(href='/laser'+crateNum) summary
+			a.btn(href='/laser'+crateNum+'/laser1' id='btn1' style=" background-color: darkgrey; color: white;") Laser 1
+			a.btn(href='/laser'+crateNum+'/laser2' id='btn2' style=" background-color: darkgrey; color: white;") Laser 2
+			a.btn(href='/laser'+crateNum+'/laser3' id='btn3' style=" background-color: darkgrey; color: white;") Laser 3
+			a.btn(href='/laser'+crateNum+'/laser4' id='btn4' style=" background-color: darkgrey; color: white;") Laser 4
+			a.btn(href='/laser'+crateNum+'/laser5' id='btn5' style=" background-color: darkgrey; color: white;") Laser 5
+			a.btn(href='/laser'+crateNum+'/laser6' id='btn6' style=" background-color: darkgrey; color: white;") Laser 6
+	center
+		RUN NUMBER  
+		b#runNum
+		|#{''} EVENT  
+		b#eventNum
+		|#{''} N. LM ISLANDS (for each channel)
+		b#lmIslands
+		|#{''} N. SM ISLANDS (for each channel)
+		b#smIslands
+	.row
+		.col-md-6
+			h4 LOCAL MONITORS click on channel to select the trace 
+			div#lmTraceContainer
+		//.col-md-2
+		.col-md-6
+			h4 SOURCE MONITORS click on channel to select the trace 
+			div#smTraceContainer
+	.row
+		.col-md-6
+			div#lmChannelTrace.plot
+			div#lmIslandHist.plot
+		.col-md-6
+			div#smChannelTrace.plot
+			div#smIslandHist.plot
